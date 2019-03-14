@@ -47,9 +47,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
  * cors() - CORS를 대응하기 위한 라이브러리 ( Access-Control-Allow-Origin: * )
  * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
  */
+var blacklist = [];
 app.use(cors({
+  origin: function (origin, callback) {
+    if (blacklist.includes(origin)) {
+      callback(new Error('Not allowed by CORS'))
+    } else {
+      callback(null, true)
+    }
+  },
   methods:['GET','POST', 'OPTIONS'],
 }));
+
+
+var corsOptions = {
+  
+}
 
 /**
  * 비밀번호 hash에 추가로 넣을 salt카를 설정 express 자체에 세팅 app.set(key, value)
