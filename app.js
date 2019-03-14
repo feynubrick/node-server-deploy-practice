@@ -57,6 +57,7 @@ app.use(cors({
     }
   },
   methods:['GET','POST', 'OPTIONS'],
+  credentials: true
 }));
 
 
