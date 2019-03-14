@@ -48,7 +48,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
  * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
  */
 app.use(cors({
-  methods:['GET','POST'],
+  methods:['GET','POST', 'OPTIONS'],
 }));
 
 /**
